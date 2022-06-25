@@ -1,0 +1,21 @@
+﻿@model HomeVM
+
+
+@foreach (Category item in Model.Categories)
+{
+    <li>@item.CategoryName</li>
+}
+
+@*<table>
+    <tr>
+        <th>ProductName</th>
+    </tr>
+    @foreach (Product item in Model.Products)
+    {
+        <tr>
+            <td>
+                @item.ProductName
+            </td>
+        </tr>
+    }
+</table>*@

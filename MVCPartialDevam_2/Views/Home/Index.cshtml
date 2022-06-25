@@ -1,0 +1,79 @@
+﻿@model HomeVM
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Isim</th>
+            <th>SoyIsim</th>
+            </tr>
+
+    </thead>
+    <tbody>
+       @foreach (Employee item in Model.Employees)
+       {
+           <tr>
+               <td>@item.FirstName</td>
+               <td>@item.LastName</td>
+           </tr>
+       }
+    </tbody>
+</table>
+
+
+<button id="btnGetAll" class="btn btn-primary">
+    Kategorileri Getir
+</button>
+
+<ul id="kategoriListesi">
+
+</ul>
+
+<ul id="urunListesi">
+
+</ul>
+
+
+<button id="btnYokEt">Yok et</button>
+
+
+<script>
+
+
+    $(function (){
+
+
+        $("#btnGetAll").click(function () {
+
+            
+            $.get("/Home/GetAllCategories", function (gelenSayfa) {
+
+                $("#kategoriListesi").html(gelenSayfa);
+            })
+
+            $.get("/Home/GetAllProducts", function (urunler)
+            {
+
+                $("#urunListesi").html(urunler);
+            })
+
+        })
+
+
+        $("#btnYokEt").click(function () {
+            $("#kategoriListesi").html("");
+            $("#urunListesi").html("");
+        })
+
+
+    })
+
+
+
+</script>
